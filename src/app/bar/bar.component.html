@@ -1,0 +1,85 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav-content>
+        <app-alert-basket *ngIf="basketOpened" (close)="openBasket()">
+            <span style="cursor:pointer; font-size: 54px;" class="material-icons">shopping_basket</span>
+            <hr>
+        </app-alert-basket>
+        <app-alert-basket *ngIf="accountOpened" (close)="openAccount()">
+            <span style="cursor:pointer; font-size: 54px;" class="material-icons">account_circle</span>
+            <!-- <img style="height: 54px; border-radius:99%" *ngIf="photo" src="{{ photo.profile }}"> -->
+            <!-- <h4>{{userData.email}}</h4> -->
+            <hr>
+            <p style="cursor:pointer" routerLink="/subscription" (click)="changeAlertState()">Donation</p>
+            <p style="cursor:pointer" (click)="stravaButton()">Connect with Strava</p>
+            <p style="cursor:pointer" (click)="logOut()">Log out</p>
+        </app-alert-basket>
+        <!-- desktop -->
+    <mat-toolbar class="hidden-xs" style="position: fixed; z-index: 1; background-color: orange; color: white; height: 50px;">
+        <span style="cursor:pointer; font-size:35px" routerLink="/home">Shop</span>
+        <span style="width: 20%;"></span>
+        <span style="width: 60%">
+            <form [formGroup]="searchResult">
+                <input style="font-size:16px; width:100%" type="text" formControlName="search" class="form-control" placeholder="Search for products"/>
+            </form>
+                <!-- <button type="submit">S</button> -->
+        </span>
+        <span style="cursor:pointer" class="material-icons" (click)="onSubmit()" >search</span>
+        <span style="width: 10%;"></span>
+        <span style="cursor:pointer" class="material-icons" (click)="openBasket()">shopping_basket</span>
+        <span style="width: 20px;"></span>
+        <span style="cursor:pointer"class="material-icons" (click)="openAccount()">account_circle</span>
+    </mat-toolbar>
+    <mat-toolbar class="hidden-xs" style="position:fixed; top:50px; background-color: rgb(77, 75, 74); color: white; height: 50px;">
+        <span style="font-size: 18px;">Something</span>
+        <span style="width: 35px;"></span>
+        <span style="font-size: 18px;">Something</span>
+        <span style="width: 35px;"></span>
+        <span style="font-size: 18px;">Something</span>
+        <span style="width: 35px;"></span>
+        <span style="font-size: 18px;">Something</span>
+        <span style="width: 35px;"></span>
+        <span style="font-size: 18px;">Something</span>
+        <span style="width: 35px;"></span>
+    </mat-toolbar>
+    <!-- smartphone -->
+    <mat-toolbar class="hidden-sm hidden-md hidden-lg hidden-xl" style="position: fixed; z-index: 1; background-color: orange; color: white; height: 50px;">
+        <span style="cursor:pointer" class="material-icons" (click)="openBar()">menu</span>
+        <span style="cursor:pointer; font-size:20px" routerLink="/home">Shop</span>
+        <span style="width: 20%;"></span>
+        <span style="width: 50%">
+            <form [formGroup]="searchResult">
+                <input style="font-size:16px; width:100%" type="text" formControlName="search" class="form-control" placeholder="Search"/>
+            </form>
+        </span>
+        <span style="cursor:pointer" class="material-icons" (click)="onSubmit()" >search</span>
+        <span style="width: 20px;"></span>
+        <span style="cursor:pointer" class="material-icons" (click)="openBasket()">shopping_basket</span>
+        <span style="width: 20px;"></span>
+        <span style="cursor:pointer"class="material-icons" (click)="openAccount()">account_circle</span>
+    </mat-toolbar>
+
+    <div class="hidden-sm hidden-md hidden-lg hidden-xl" style="position: fixed; top:50px; z-index: 1; background-color: rgb(53, 49, 41); color: white; height: 100%; width: 100%;" *ngIf="openedBar">
+        <mat-nav-list>
+            <hr>
+            <a style="font-size: 20px; color:white" mat-list-item routerLink="/register">Something <span style="cursor:pointer; font-size:36px"  class="material-icons">arrow_right_alt</span></a>
+            <hr>
+            <a style="font-size: 20px; color:white" mat-list-item routerLink="/aboutMe">Something <span style="cursor:pointer; font-size:36px" class="material-icons">arrow_right_alt</span></a>
+            <hr>
+            <a style="font-size: 20px; color:white" mat-list-item routerLink="/contact">Something <span style="cursor:pointer; font-size:36px" class="material-icons">arrow_right_alt</span></a>
+            <hr>
+            <a style="font-size: 20px; color:white" mat-list-item>Something <span style="cursor:pointer; font-size:36px"  class="material-icons">arrow_right_alt</span></a>
+            <hr>
+            <a style="font-size: 20px; color:white" mat-list-item>Something <span style="cursor:pointer; font-size:36px"  class="material-icons">arrow_right_alt</span></a>
+        </mat-nav-list>
+    </div>
+
+    <div style="height: 100px; width:100%;"></div>
+    <ng-content style="position:absolute; z-index: 0;"></ng-content>
+    <div style="height: 70px; width:100%;"></div>
+
+
+
+    </mat-sidenav-content>
+    
+
+</mat-sidenav-container>
